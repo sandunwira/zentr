@@ -2,7 +2,7 @@
 name = "zentr"
 version = "0.1.0"
 description = "Zentr is a native Windows app for unified homelab monitoring, control, and automation."
-authors = ["you"]
+authors = ["Zentr Project"]
 edition = "2021"
 publish = false
 

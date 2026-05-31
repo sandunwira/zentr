@@ -1,50 +1,132 @@
-import { useState } from "react";
-import reactLogo from "../assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
-import "../index.css";
+import { useEffect, useState } from "react";
+
+import Sidebar from "../components/Sidebar";
 
 function HomePage() {
-	const [greetMsg, setGreetMsg] = useState("");
-	const [name, setName] = useState("");
+	const [now, setNow] = useState(() => new Date());
+	const [recentEntries, setRecentEntries] = useState([
+		{
+			name: "Kodi",
+			icon: "/images/apps/kodi.png"
+		},
+		{
+			name: "YouTube Music",
+			icon: "/images/apps/youtube-music.png"
+		},
+		{
+			name: "Netflix",
+			icon: "/images/apps/netflix.png"
+		},
+		{
+			name: "Spotify",
+			icon: "/images/apps/spotify.png"
+		},
+		{
+			name: "Disney+",
+			icon: "/images/apps/disney-plus.png"
+		},
+		{
+			name: "YouTube",
+			icon: "/images/apps/youtube.png"
+		},
+		{
+			name: "Crunchyroll",
+			icon: "/images/apps/crunchyroll.png"
+		},
+		{
+			name: "Prime Video",
+			icon: "/images/apps/prime-video.png"
+		},
+		{
+			name: "Apple TV+",
+			icon: "/images/apps/apple-tv-plus.png"
+		}
+	]);
 
-	async function greet() {
-		// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-		setGreetMsg(await invoke("greet", { name }));
-	}
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setNow(new Date());
+		}, 1000);
+
+		return () => clearInterval(timer);
+	}, []);
 
 	return (
-		<main className="container">
-			<h1>Welcome to Tauri + React</h1>
+		<div className="flex flex-row h-full w-full">
+			<Sidebar />
 
-			<div className="row">
-				<a href="https://vite.dev" target="_blank">
-					<img src="/vite.svg" className="logo vite" alt="Vite logo" />
-				</a>
-				<a href="https://tauri.app" target="_blank">
-					<img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
+			<div className="flex-1 p-12 space-y-16 max-w-[calc(100vw-300px)]">
+				{/* Background gradient overlay */}
+				<div className="absolute top-0 left-0 w-full h-full bg-linear-to-tl from-blue-900/20 to-transparent pointer-events-none" />
+
+				<div className="flex flex-row items-center justify-between w-full">
+					<div className="flex flex-col items-start gap-2">
+						<h1 className="text-4xl font-semibold uppercase text-gray-300">
+							Good Morning!
+						</h1>
+						<p className="text-sm text-gray-400">
+							Today is a great day to customize your settings and make Zentr truly yours.
+						</p>
+					</div>
+					<div className="flex flex-col items-end gap-2">
+						<h1 className="text-4xl font-semibold uppercase text-gray-300">
+							{now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+						</h1>
+						<p className="text-sm text-gray-400">
+							{now.toLocaleDateString([], {
+								weekday: "long",
+								year: "numeric",
+								month: "long",
+								day: "numeric"
+							})}
+						</p>
+					</div>
+				</div>
+
+				<div className="flex flex-row items-center justify-between w-full">
+					<div className="w-full flex flex-col gap-4">
+						<h1 className="text-2xl font-semibold uppercase text-gray-300">
+							Now Playing
+						</h1>
+						<button className="flex flex-row items-center justify-start gap-6 max-h-40 p-6 bg-zinc-800/80 focus:bg-gray-900/80 text-zinc-100 focus:text-blue-300 rounded-lg focus:outline-none border-2 border-transparent focus:border-blue-400 transition-colors duration-200">
+							<img src="/images/apps/spotify.png" alt="Spotify" className="w-16 h-16 rounded-md object-contain" />
+							<div className="flex flex-col items-start gap-1">
+								<p className="text-sm text-zinc-300">Spotify</p>
+								<p className="text-lg font-medium">Blinding Lights</p>
+								<p className="text-sm text-gray-400">The Weeknd</p>
+							</div>
+						</button>
+					</div>
+				</div>
+
+				<div className="flex flex-row items-center justify-between w-full">
+					<div className="flex flex-col gap-4">
+						<h1 className="text-2xl font-semibold uppercase text-gray-300">
+							Recents
+						</h1>
+						<div className="flex flex-row max-w-[calc(100vw-396px)] overflow-x-auto scrollbar-hide gap-4">
+							{recentEntries.map((entry, index) => (
+								<button key={index} className="flex flex-col items-center justify-center gap-4 min-w-40 max-w-40 min-h-40 max-h-40 py-6 bg-zinc-800/80 focus:bg-gray-900/80 text-zinc-100 focus:text-blue-300 rounded-lg focus:outline-none border-2 border-transparent focus:border-blue-400 transition-colors duration-200">
+									<img src={entry.icon} alt={entry.name} className="w-16 h-16 rounded-md object-contain" />
+									<p className="text-sm text-zinc-300 whitespace-nowrap truncate">{entry.name}</p>
+								</button>
+							))}
+						</div>
+					</div>
+				</div>
+
+				{/* <div className="flex flex-row items-center justify-between w-full">
+					<div className="flex flex-col gap-4">
+						<h1 className="text-2xl font-semibold uppercase text-gray-300">
+							Welcome to Zentr
+						</h1>
+						<p className="text-sm text-gray-400">
+							Your centralized hub for all your settings and preferences.
+						</p>
+					</div>
+				</div> */}
 			</div>
-			<p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-			<form
-				className="row"
-				onSubmit={(e) => {
-					e.preventDefault();
-					greet();
-				}}
-			>
-				<input
-					id="greet-input"
-					onChange={(e) => setName(e.currentTarget.value)}
-					placeholder="Enter a name..."
-				/>
-				<button type="submit">Greet</button>
-			</form>
-			<p>{greetMsg}</p>
-		</main>
+		</div>
 	);
 }
 

@@ -5,10 +5,12 @@ import HomePage from "./pages/Home";
 function App() {
 	return (
 		<Router>
-			<Routes>
-				<Route path="/" element={<Navigate to="/home" />} />
-				<Route path="/home" element={<HomePage />} />
-			</Routes>
+			<div className="fixed top-0 left-0 h-dvh w-dvw">
+				<Routes>
+					<Route path="/" element={<Navigate to="/home" />} />
+					<Route path="/home" element={<HomePage />} />
+				</Routes>
+			</div>
 		</Router>
 	);
 }

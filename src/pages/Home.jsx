@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 import Sidebar from "../components/Sidebar";
 
@@ -85,9 +86,34 @@ function HomePage() {
 
 				<div className="flex flex-row items-center justify-between w-full">
 					<div className="w-full flex flex-col gap-4">
-						<h1 className="text-2xl font-semibold uppercase text-gray-300">
-							Now Playing
-						</h1>
+						<div className="flex flex-row items-center gap-2">
+							<h1 className="text-2xl font-semibold uppercase text-gray-300">
+								Now Playing
+							</h1>
+							<div className="h-6 max-h-6 w-6 max-w-6 text-zinc-400">
+								<svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+									<rect x="20" y="20" width="16" height="40" fill="currentColor">
+										<animateTransform attributeType="xml"
+											attributeName="transform" type="translate"
+											values="0 0; 0 20; 0 0"
+											begin="0" dur="1.2s" repeatCount="indefinite" />
+									</rect>
+									<rect x="45" y="20" width="16" height="40" fill="currentColor">
+										<animateTransform attributeType="xml"
+											attributeName="transform" type="translate"
+											values="0 0; 0 20; 0 0"
+											begin="0.2s" dur="1.2s" repeatCount="indefinite" />
+									</rect>
+									<rect x="70" y="20" width="16" height="40" fill="currentColor">
+										<animateTransform attributeType="xml"
+											attributeName="transform" type="translate"
+											values="0 0; 0 20; 0 0"
+											begin="0.4s" dur="1.2s" repeatCount="indefinite" />
+									</rect>
+								</svg>
+							</div>
+						</div>
 						<div className="flex flex-row items-center justify-between gap-6 max-h-40 p-6 bg-zinc-800/80 focus:bg-gray-900/80 text-zinc-100 focus:text-blue-300 rounded-lg focus:outline-none border-2 border-transparent focus:border-blue-400 transition-colors duration-200">
 							<div className="flex flex-row items-center gap-4">
 								<img src="/images/apps/spotify.png" alt="Spotify" className="w-16 h-16 rounded-md object-contain" />

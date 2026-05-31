@@ -88,14 +88,39 @@ function HomePage() {
 						<h1 className="text-2xl font-semibold uppercase text-gray-300">
 							Now Playing
 						</h1>
-						<button className="flex flex-row items-center justify-start gap-6 max-h-40 p-6 bg-zinc-800/80 focus:bg-gray-900/80 text-zinc-100 focus:text-blue-300 rounded-lg focus:outline-none border-2 border-transparent focus:border-blue-400 transition-colors duration-200">
-							<img src="/images/apps/spotify.png" alt="Spotify" className="w-16 h-16 rounded-md object-contain" />
-							<div className="flex flex-col items-start gap-1">
-								<p className="text-sm text-zinc-300">Spotify</p>
-								<p className="text-lg font-medium">Blinding Lights</p>
-								<p className="text-sm text-gray-400">The Weeknd</p>
+						<div className="flex flex-row items-center justify-between gap-6 max-h-40 p-6 bg-zinc-800/80 focus:bg-gray-900/80 text-zinc-100 focus:text-blue-300 rounded-lg focus:outline-none border-2 border-transparent focus:border-blue-400 transition-colors duration-200">
+							<div className="flex flex-row items-center gap-4">
+								<img src="/images/apps/spotify.png" alt="Spotify" className="w-16 h-16 rounded-md object-contain" />
+								<div className="flex flex-col items-start gap-1">
+									<p className="text-sm text-zinc-300">Spotify</p>
+									<p className="text-lg font-medium">Blinding Lights</p>
+									<p className="text-sm text-gray-400">The Weeknd</p>
+								</div>
 							</div>
-						</button>
+							<div className="flex flex-row items-center gap-4">
+								<button className="p-3 bg-transparent focus:bg-zinc-400/60 disabled:bg-transparent text-zinc-100 disabled:text-zinc-100/30 focus:outline-none transition-colors duration-200 rounded-full" disabled>
+									<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-player-skip-back">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M19.496 4.136l-12 7a1 1 0 0 0 0 1.728l12 7a1 1 0 0 0 1.504 -.864v-14a1 1 0 0 0 -1.504 -.864z" />
+										<path d="M4 4a1 1 0 0 1 .993 .883l.007 .117v14a1 1 0 0 1 -1.993 .117l-.007 -.117v-14a1 1 0 0 1 1 -1z" />
+									</svg>
+								</button>
+								<button className="p-3 bg-transparent focus:bg-zinc-400/60 disabled:bg-transparent text-zinc-100 disabled:text-zinc-100/30 focus:outline-none transition-colors duration-200 rounded-full">
+									<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-player-pause">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" />
+										<path d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" />
+									</svg>
+								</button>
+								<button className="p-3 bg-transparent focus:bg-zinc-400/60 disabled:bg-transparent text-zinc-100 disabled:text-zinc-100/30 focus:outline-none transition-colors duration-200 rounded-full">
+									<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-player-skip-forward">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M3 5v14a1 1 0 0 0 1.504 .864l12 -7a1 1 0 0 0 0 -1.728l-12 -7a1 1 0 0 0 -1.504 .864z" />
+										<path d="M20 4a1 1 0 0 1 .993 .883l.007 .117v14a1 1 0 0 1 -1.993 .117l-.007 -.117v-14a1 1 0 0 1 1 -1z" />
+									</svg>
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 
